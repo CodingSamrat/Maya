@@ -1,0 +1,29 @@
+{
+  "name": "omega",
+  "version": "1.0.0",
+  "description": "This is a Discord Bot, which can do all task for you",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodingSamrat/Omega.git"
+  },
+  "keywords": [
+    "discordbot",
+    "discord",
+    "bot",
+    "community"
+  ],
+  "author": "Sam (Coding Samrat)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodingSamrat/Omega/issues"
+  },
+  "homepage": "https://github.com/CodingSamrat/Omega#readme",
+  "dependencies": {
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1"
+  }
+}
