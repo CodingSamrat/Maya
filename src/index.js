@@ -29,6 +29,15 @@ client.on('messageCreate', (message) => {
     }
 });
 
+// Event message. When a message is sent, this event is called.
+client.on('messageCreate', (message) => {
+    if (message.author.bot) return; // If the message is sent by a bot, ignore it.
+
+    if (message.content === '?') {
+        message.channel.send('I\'m Omega to help!')
+    }
+});
+
 
 // Login the bot with the token.
 client.login(process.env.TOKEN)
