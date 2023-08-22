@@ -1,6 +1,6 @@
-import { IntentsBitField  } from 'discord.js' ;
-
-export const intents = [
+// import { IntentsBitField  } from 'discord.js' ;
+const {IntentsBitField} = require('discord.js');
+module.exports = intents = [
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMembers,
     IntentsBitField.Flags.GuildMessages,

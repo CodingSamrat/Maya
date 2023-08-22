@@ -1,8 +1,16 @@
-import { Client } from 'discord.js' ;
-import { intents  } from './config.js' ;
+// import { Client } from 'discord.js' ;
+// import { intents  } from './config.js' ;
+
+const {Client, IntentsBitField} = require('discord.js');
 
 // Create a new client instance
-const client = new Client({intents: intents});
+const client = new Client({
+    intents: intents = [
+        IntentsBitField.Flags.Guilds,
+        IntentsBitField.Flags.GuildMembers,
+        IntentsBitField.Flags.GuildMessages,
+        IntentsBitField.Flags.MessageContent,
+]});
 
 // Event ready. When the bot is ready, this event is called.
 client.on('ready', (c) => {
@@ -30,13 +38,14 @@ client.on('messageCreate', (message) => {
 
 
 // Start and Stop the bot. Handle the login and logout of the bot from the server.
-export const StartBot = async () => {
+const StartBot = async () => {
     await client.login(process.env.TOKEN);
     console.log(`\nLogin Successfull! ✅  `)
 }
 
-export const StopBot = async () => {
-    await client.destroy();
-    console.log(`\nBot is Offline! ❌`)
-}
+// const StopBot = async () => {
+//     await client.destroy();
+//     console.log(`\nBot is Offline! ❌`)
+// }
 
+module.exports = {StartBot};

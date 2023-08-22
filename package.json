@@ -2,13 +2,13 @@
   "name": "omega",
   "version": "1.0.0",
   "description": "This is a Discord Bot, which can do all task for you",
-  "main": "index.js",
+  "main": "server/index.js",
   "engines": {
     "node": "18.x"
   },
-  "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
