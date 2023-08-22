@@ -23,6 +23,7 @@ client.on('messageCreate', (message) => {
     if (message.author.bot) return; // If the message is sent by a bot, ignore it.
 
     if (message.content === 'ping') {
+        const response =  fetch("http://example.com/movies.json");
         message.channel.send('pong pong pong!')
     }
 });
