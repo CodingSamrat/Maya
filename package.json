@@ -2,10 +2,13 @@
   "name": "omega",
   "version": "1.0.0",
   "description": "This is a Discord Bot, which can do all task for you",
-  "main": "src/server.js",
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "type": "module",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +21,7 @@
     "community"
   ],
   "author": "Sam (Coding Samrat)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/CodingSamrat/Omega/issues"
   },
