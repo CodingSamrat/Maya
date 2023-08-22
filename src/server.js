@@ -3,7 +3,7 @@ import express from "express";
 import { StartBot, StopBot } from "./omega/bot.js";
 
 // Run the bot directly if the DEBUG mode is enabled
-if (process.env.AUTORUNBOT === "1") {
+if (process.env.AUTO_RUN_BOT === "1") {
   StartBot();
 } else {
   const app = express();
