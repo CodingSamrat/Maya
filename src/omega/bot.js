@@ -1,22 +1,12 @@
-require('dotenv').config(); // Load the .env file.
-const { Client, IntentsBitField  } = require('discord.js') ;
+import { Client } from 'discord.js' ;
+import { intents  } from './config.js' ;
 
-
-const client = new Client(
-    {
-        intents: [
-            IntentsBitField.Flags.Guilds,
-            IntentsBitField.Flags.GuildMembers,
-            IntentsBitField.Flags.GuildMessages,
-            IntentsBitField.Flags.MessageContent,
-        ]
-    }
-);
-
+// Create a new client instance
+const client = new Client({intents: intents});
 
 // Event ready. When the bot is ready, this event is called.
 client.on('ready', (c) => {
-    console.log(`\n✅  ${client.user.tag} is ready !`)
+    console.log(`${client.user.tag} is now Online...🚀`)
 });
 
 
@@ -25,7 +15,7 @@ client.on('messageCreate', (message) => {
     if (message.author.bot) return; // If the message is sent by a bot, ignore it.
 
     if (message.content === 'ping') {
-        message.channel.send('pong')
+        message.channel.send('pong pong pong!')
     }
 });
 
@@ -39,5 +29,14 @@ client.on('messageCreate', (message) => {
 });
 
 
-// Login the bot with the token.
-client.login(process.env.TOKEN)
+// Start and Stop the bot. Handle the login and logout of the bot from the server.
+export const StartBot = async () => {
+    await client.login(process.env.TOKEN);
+    console.log(`\nLogin Successfull! ✅  `)
+}
+
+export const StopBot = async () => {
+    await client.destroy();
+    console.log(`\nBot is Offline! ❌`)
+}
+
