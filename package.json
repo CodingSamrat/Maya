@@ -4,7 +4,7 @@
   "description": "This is a Discord Bot, which can do all task for you",
   "main": "index.js",
   "engines": {
-    "node": "14.x"
+    "node": "18.x"
   },
   "type": "module",
   "scripts": {
