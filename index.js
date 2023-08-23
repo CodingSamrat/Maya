@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { StartBot, StopBot } = require('./src');
+const { StartBot } = require('./src');
 
 // Start the bot
 StartBot();
