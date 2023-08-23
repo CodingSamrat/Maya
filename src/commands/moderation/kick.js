@@ -8,15 +8,15 @@ module.exports = {
      * @param {Interaction} interaction 
      */
     callback: async (client, interaction) => {
-        await interaction.deferReply();
-        
         const targetUserId = interaction.options.get('user').value;
-        const reasonOfKick = interaction.options.get('reason')?.value || "No reason provided";
+        const reason       = interaction.options.get('reason')?.value || "No reason provided";
         
-        const targetUser   = await interaction.guild.members.fetch(targetUserId);
+        await interaction.deferReply();
         
         
         // Check if the user is valid
+        const targetUser   = await interaction.guild.members.fetch(targetUserId);
+        
         if (!targetUser) {
             await interaction.editReply("The user you are trying to kick is no longer member of this server.");
             return;
@@ -46,8 +46,8 @@ module.exports = {
 
         // Finally kick the user
         try {
-            await targetUser.kick({ reason: reasonOfKick });
-            await interaction.editReply(`${interaction.member} kicked ${targetUser} \nReason: ${reasonOfKick}`);
+            await targetUser.kick({ reason });
+            await interaction.editReply(`${interaction.member} kicked ${targetUser} \nReason: ${reason}`);
         } catch (error) {
             console.log(`There was an error while kicking. ${error}`);
         }

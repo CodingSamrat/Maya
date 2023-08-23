@@ -8,15 +8,14 @@ module.exports = {
      * @param {Interaction} interaction 
      */
     callback: async (client, interaction) => {
-        await interaction.deferReply();
-        
         const targetUserId = interaction.options.get('user').value;
-        const reasonOfBan  = interaction.options.get('reason')?.value || "No reason provided";
+        const reason       = interaction.options.get('reason')?.value || "No reason provided";
         
-        const targetUser   = await interaction.guild.members.fetch(targetUserId);
+        await interaction.deferReply();
         
         
         // Check if the user is valid
+        const targetUser   = await interaction.guild.members.fetch(targetUserId);
         if (!targetUser) {
             await interaction.editReply("The user you are trying to ban is no longer member of this server.");
             return;
@@ -46,8 +45,8 @@ module.exports = {
 
         // Finally ban the user
         try {
-            await targetUser.ban({ reason: reasonOfBan });
-            await interaction.editReply(`${interaction.member} banned ${targetUser} \nReason: ${reasonOfBan}`);
+            await targetUser.ban({ reason });
+            await interaction.editReply(`${interaction.member} banned ${targetUser} \nReason: ${reason}`);
         } catch (error) {
             console.log(`There was an error while banning. ${error}`);
         }
