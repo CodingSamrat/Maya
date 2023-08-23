@@ -1,5 +1,6 @@
 const { Client, IntentsBitField } = require("discord.js");
 const eventHandler = require("./handlers/eventHandler");
+const mongoose = require('mongoose');
 
 // Create a new client instance
 const client = new Client({
@@ -14,6 +15,8 @@ const client = new Client({
 
 
 const StartBot = async () => {
+  await mongoose.connect(process.env.MONGODB_URI);
+
   eventHandler(client);
 
   await client.login(process.env.TOKEN);
