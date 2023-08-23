@@ -1,0 +1,31 @@
+const { Client, Interaction } = require("discord.js");
+const Economy = require("../../Models/Economy");
+
+module.exports = {
+  /**
+   *
+   * @param {Client} client
+   * @param {Interaction} interaction
+   */
+  callback: async (client, interaction) => {
+    if (!interaction.inGuild()) {
+      interaction.reply({
+        content: "You can only run this command inside a server.",
+        ephemeral: true,
+      });
+      return;
+    }
+
+    try {
+        await interaction.deferReply();
+
+        interaction.editReply("Daily reward claimed!");
+    } catch (error) {
+        console.log(`Error to claim daily reward: ${error}`)
+    }
+
+  },
+
+  name: "daily",
+  description: "Claim your daily reward.",
+};

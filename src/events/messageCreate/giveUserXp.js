@@ -1,6 +1,6 @@
 const { Client, Message } = require("discord.js");
 const calculateLevelXp = require("../../utils/calculateLevelXp");
-const LevelXp = require("../../models/LevelXp");
+const Economy = require("../../Models/Economy");
 const cooldowns = new Set();
 
 function getRandomXp(min, max) {
@@ -30,21 +30,21 @@ module.exports = async (client, message) => {
   };
 
   try {
-    const levelXpObject = await LevelXp.findOne(quiry);
+    const economyObj = await Economy.findOne(quiry);
     
-    if (levelXpObject) {
-      levelXpObject.xp += xpToGive;
+    if (economyObj) {
+      economyObj.xp += xpToGive;
 
       // Check if the user has enough xp to level up
-      if (levelXpObject.xp >= calculateLevelXp(levelXpObject.level)) {
-          levelXpObject.xp = 0;
-          levelXpObject.level += 1;
+      if (economyObj.xp >= calculateLevelXp(economyObj.level)) {
+          economyObj.xp = 0;
+          economyObj.level += 1;
           
-        message.channel.send(`🥳 Congratulations ${message.member}! \nYou have leveled up to **level ${levelXpObject.level}**.`);
+        message.channel.send(`🥳 Congratulations ${message.member}! \nYou have leveled up to **level ${economyObj.level}**.`);
       }
 
       // Save the updated level
-      await levelXpObject.save().catch((e) => {
+      await economyObj.save().catch((e) => {
         console.log(`Error saving updated level ${e}`);
         return;
       });
@@ -56,10 +56,10 @@ module.exports = async (client, message) => {
       }, 60000);
 
     }
-    // if (!levelXpObject)
+    // if (!economyObj)
     else {
       // If the user is new in the guild.  Create new LevelXp for this user
-      const newLevelXp = await LevelXp.create({
+      const newLevelXp = await Economy.create({
         userId: message.author.id,
         guildId: message.guild.id,
         xp: xpToGive,

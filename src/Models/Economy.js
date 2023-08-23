@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const levelXpSchema = new Schema({
+const schema = new Schema({
   userId: {
     type: String,
     required: true,
@@ -17,6 +17,13 @@ const levelXpSchema = new Schema({
     type: Number,
     default: 0,
   },
+  balance: {
+    type: Number,
+    default: 0,
+  },
+  lastDaily: {
+    type: Date,
+  },
 });
 
-module.exports = model("LevelXp", levelXpSchema);
+module.exports = model("Economy", schema);

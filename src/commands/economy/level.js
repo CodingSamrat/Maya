@@ -5,7 +5,7 @@ const {
   AttachmentBuilder,
 } = require("discord.js");
 const calculateLevelXp = require("../../utils/calculateLevelXp");
-const LevelXp = require("../../models/LevelXp");
+const Economy = require("../../Models/Economy");
 const canvacord = require("canvacord");
 
 module.exports = {
@@ -35,17 +35,17 @@ module.exports = {
       return;
     }
 
-    // quiry to retrieve the levelXpObject
+    // quiry to retrieve the economyObj
     const quiry = {
       userId: targetUser.id,
       guildId: interaction.guild.id,
     };
 
     try {
-      const levelXpObject = await LevelXp.findOne(quiry);
+      const economyObj = await Economy.findOne(quiry);
 
       // check if the user has any levels
-      if (!levelXpObject) {
+      if (!economyObj) {
         interaction.editReply(
           targetUserId
             ? `**${targetUser.user.tag}** doesn't have any levels yet. Try again when they chat a little more.`
@@ -55,12 +55,12 @@ module.exports = {
       }
 
       // Get Rank
-      const allLevelXpObjects = await LevelXp.find({
+      const alleconomyObjs = await Economy.find({
         guildId: interaction.guild.id,
       });
 
       //sort the array in descending order
-      allLevelXpObjects.sort((a, b) => {
+      alleconomyObjs.sort((a, b) => {
         if (a.level === b.level) {
           return b.xp - a.xp;
         } else {
@@ -68,15 +68,15 @@ module.exports = {
         }
       });
 
-      let currentRank = allLevelXpObjects.findIndex((lvl) => lvl.userId === targetUser.id) + 1;
+      let currentRank = alleconomyObjs.findIndex((lvl) => lvl.userId === targetUser.id) + 1;
 
       // Create rank card
       const rankData = new canvacord.Rank()
         .setAvatar(targetUser.user.displayAvatarURL({ size: 256 }))
         .setRank(currentRank)
-        .setLevel(levelXpObject.level)
-        .setCurrentXP(levelXpObject.xp)
-        .setRequiredXP(calculateLevelXp(levelXpObject.level))
+        .setLevel(economyObj.level)
+        .setCurrentXP(economyObj.xp)
+        .setRequiredXP(calculateLevelXp(economyObj.level))
         .setStatus(targetUser.presence.status)
         .setProgressBar("#FFC300", "COLOR")
         .setUsername(targetUser.user.username)
