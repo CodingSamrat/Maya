@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/CodingSamrat/Omega#readme",
   "dependencies": {
+    "canvacord": "^5.4.10",
     "discord.js": "^14.13.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
