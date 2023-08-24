@@ -24,13 +24,13 @@ module.exports = {
             let guildObject = await Guild.findOne({ guildId: interaction.guild.id });
 
             if (guildObject) {
-                if (guildObject.welcomeChannilId){
+                if (guildObject.welcomeChannelId){
                     interaction.editReply(`Welcome System has been disabled.\nYou can enable this feature by running \`/welcome-config\``);
                 }else{
                     interaction.editReply(`Welcome System has allready been disabled. \nYou can enable this feature by running \`/welcome-config\``);
                 }
 
-                guildObject.welcomeChannilId = null;
+                guildObject.welcomeChannelId = null;
             } else {
                 guildObject = new Guild({
                     guildId: interaction.guild.id,

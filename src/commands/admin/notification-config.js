@@ -29,25 +29,25 @@ module.exports = {
             let guildObject = await Guild.findOne({ guildId: interaction.guild.id });
 
             if (guildObject) {
-                if (guildObject.notificationChannilId){
+                if (guildObject.notificationChannelId){
 
-                    if (guildObject.notificationChannilId === targetChannelId) {
+                    if (guildObject.notificationChannelId === targetChannelId) {
                         interaction.editReply(`Notification Channel has already been configured for ${newChannle} role. To disable run \`/notification-disable\``);
                         return;
                     }
                     
-                    const oldChannel = interaction.guild.channels.cache.get(guildObject.notificationChannilId);
+                    const oldChannel = interaction.guild.channels.cache.get(guildObject.notificationChannelId);
                     interaction.editReply(`Notification Channel has been updated from ${oldChannel} to ${newChannle}\nYou can disable this feature by running \`/notification-disable\``);
 
                 }else{
                     interaction.editReply(`${newChannle} has been configured as Notification Channel \nYou can disable this feature by running \`/notification-disable\``);
                 }
 
-                guildObject.notificationChannilId = targetChannelId;
+                guildObject.notificationChannelId = targetChannelId;
             } else {
                 guildObject = new Guild({
                     guildId: interaction.guild.id,
-                    notificationChannilId: targetChannelId,
+                    notificationChannelId: targetChannelId,
                 });
                 interaction.editReply(`${newChannle} has been configured as Notification Channel\nYou can disable this feature by running \`/notification-disable\``);
             }

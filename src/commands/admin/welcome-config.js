@@ -29,25 +29,25 @@ module.exports = {
             let guildObject = await Guild.findOne({ guildId: interaction.guild.id });
 
             if (guildObject) {
-                if (guildObject.welcomeChannilId){
+                if (guildObject.welcomeChannelId){
 
-                    if (guildObject.welcomeChannilId === targetChannelId) {
+                    if (guildObject.welcomeChannelId === targetChannelId) {
                         interaction.editReply(`${newChannle} has already been configured for Welcome Channel. To disable run \`/welcome-disable\``);
                         return;
                     }
                     
-                    const oldChannel = interaction.guild.channels.cache.get(guildObject.welcomeChannilId);
+                    const oldChannel = interaction.guild.channels.cache.get(guildObject.welcomeChannelId);
                     interaction.editReply(`Welcome Channel has been updated from ${oldChannel} to ${newChannle}\nYou can disable this feature by running \`/welcome-disable\``);
 
                 }else{
                     interaction.editReply(`${newChannle} has been configured as Welcome Channel \nYou can disable this feature by running \`/welcome-disable\``);
                 }
 
-                guildObject.welcomeChannilId = targetChannelId;
+                guildObject.welcomeChannelId = targetChannelId;
             } else {
                 guildObject = new Guild({
                     guildId: interaction.guild.id,
-                    welcomeChannilId: targetChannelId,
+                    welcomeChannelId: targetChannelId,
                 });
                 interaction.editReply(`${newChannle} has been configured as Welcome Channel\nYou can disable this feature by running \`/welcome-disable\``);
             }

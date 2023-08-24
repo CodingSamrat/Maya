@@ -24,13 +24,13 @@ module.exports = {
             let guildObject = await Guild.findOne({ guildId: interaction.guild.id });
 
             if (guildObject) {
-                if (guildObject.notificationChannilId){
+                if (guildObject.notificationChannelId){
                     interaction.editReply(`Notification System has been disabled.\nYou can enable this feature by running \`/notification-config\``);
                 }else{
                     interaction.editReply(`Notification System has allready been disabled. \nYou can enable this feature by running \`/notification-config\``);
                 }
 
-                guildObject.notificationChannilId = null;
+                guildObject.notificationChannelId = null;
             } else {
                 guildObject = new Guild({
                     guildId: interaction.guild.id,

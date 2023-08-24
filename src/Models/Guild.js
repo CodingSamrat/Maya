@@ -9,11 +9,11 @@ const schema = new Schema({
         type: String,
         default: '!',
     },
-    notificationChannilId: {
+    notificationChannelId: {
         type: String,
         default: null,
     },
-    welcomeChannilId: {
+    welcomeChannelId: {
         type: String,
         default: null,
     },
