@@ -2,7 +2,7 @@ const Guild = require("../Models/Guild");
 
 module.exports =  async (notification, arg)  => {
     const guildId = arg.guild.id;
-    let guildObject = await Guild.findOne({ guildId: arg.guild.id });
+    let guildObject = await Guild.findOne({ guildId: guildId });
     
     if (!guildObject || !guildObject.notificationChannilId) return;
 

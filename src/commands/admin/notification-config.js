@@ -36,7 +36,7 @@ module.exports = {
                         return;
                     }
                     
-                    const oldChannel = interaction.guild.roles.cache.get(guildObject.notificationChannilId);
+                    const oldChannel = interaction.guild.channels.cache.get(guildObject.notificationChannilId);
                     interaction.editReply(`Notification Channel has been updated from ${oldChannel} to ${newChannle}\nYou can disable this feature by running \`/notification-disable\``);
 
                 }else{
