@@ -9,6 +9,10 @@ const schema = new Schema({
         type: String,
         default: '!',
     },
+    notificationChannilId: {
+        type: String,
+        default: null,
+    },
     welcomeChannilId: {
         type: String,
         default: null,
