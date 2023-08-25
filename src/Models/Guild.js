@@ -17,6 +17,14 @@ const schema = new Schema({
         type: String,
         default: null,
     },
+    verifyChannelId: {
+        type: String,
+        default: null,
+    },
+    verifyRoleId: {
+        type: String,
+        default: null,
+    },
     autoRoleId: {
         type: String,
         default: null,
