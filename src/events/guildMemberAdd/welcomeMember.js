@@ -15,7 +15,7 @@ module.exports = async (client, member) => {
         channel.send(message);
 
     } catch (error) {
-        console.log('Error to wwelcome user', error)
+        console.log('Error to welcome user', error)
         
     }
 }

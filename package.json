@@ -1,5 +1,5 @@
 {
-  "name": "omega",
+  "name": "maya",
   "version": "1.0.0",
   "description": "This is a Discord Bot, which can do all task for you",
   "main": "index.js",
@@ -9,20 +9,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CodingSamrat/Omega.git"
+    "url": "git+https://github.com/CodingSamrat/Maya.git"
   },
   "keywords": [
     "discordbot",
     "discord",
     "bot",
+    "maya",
     "community"
   ],
   "author": "Sam (Coding Samrat)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CodingSamrat/Omega/issues"
+    "url": "https://github.com/CodingSamrat/Maya/issues"
   },
-  "homepage": "https://github.com/CodingSamrat/Omega#readme",
+  "homepage": "https://github.com/CodingSamrat/Maya#readme",
   "dependencies": {
     "canvacord": "^5.4.10",
     "discord.js": "^14.13.0",
